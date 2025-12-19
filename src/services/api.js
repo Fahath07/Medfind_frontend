@@ -1,9 +1,9 @@
-const API_BASE_URL = process.env.REACT_APP_API_BASE || 'http://localhost:5000/api';
+const API_BASE_URL = process.env.REACT_APP_API_BASE || 'https://medfind-backend.onrender.com/api';
 
 // Test connection function
 const testConnection = async () => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/health`);
+    const response = await fetch(`${process.env.REACT_APP_API_URL || 'https://medfind-backend.onrender.com'}/api/health`);
     return response.ok;
   } catch (error) {
     console.error('Connection test failed:', error);
@@ -17,7 +17,7 @@ class ApiService {
       // Test connection first
       const isConnected = await testConnection();
       if (!isConnected) {
-        throw new Error('Cannot connect to server. Please check if the backend is running on http://localhost:5000');
+        throw new Error('Cannot connect to server. Please check if the backend is running on https://medfind-backend.onrender.com');
       }
       
       console.log('Attempting login with URL:', `${API_BASE_URL}/auth/login`);
@@ -41,7 +41,7 @@ class ApiService {
     } catch (error) {
       console.error('Login error:', error);
       if (error.name === 'TypeError' && error.message.includes('fetch')) {
-        throw new Error('Cannot connect to server. Please check if the backend is running on http://localhost:5000');
+        throw new Error('Cannot connect to server. Please check if the backend is running on https://medfind-backend.onrender.com');
       }
       throw error;
     }
