@@ -1,0 +1,86 @@
+.hero {
+  /* Background image is applied from the component (Home.js) using the public URL to avoid webpack trying to resolve it.
+     Keep the gradient/fallback behavior here. */
+  background: linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+  background-size: cover;
+  background-position: center;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  text-align: center;
+  color: white;
+  padding: 60px 20px;
+}
+
+/* Ensure the overlay element (present in the JSX) stretches across the hero section */
+.hero-overlay {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  pointer-events: auto;
+}
+
+.hero-title {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 5px 5px 5px black;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.btn-large {
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.brand-intro {
+  background: #f8f9fa;
+}
+
+.brand-description {
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #555;
+}
+
+.categories {
+  background: white;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+}

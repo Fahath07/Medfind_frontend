@@ -1,0 +1,95 @@
+.pharmacy-dashboard {
+  min-height: calc(100vh - 200px);
+}
+
+.dashboard-hero {
+  padding: 100px 0;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.dashboard-header {
+  position: relative;
+  z-index: 2;
+}
+
+.dashboard-header h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  font-weight: 700;
+}
+
+.dashboard-header p {
+  font-size: 20px;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  margin: 0;
+}
+.muted {
+  color: var(--text-secondary);
+}
+
+.add-section {
+  margin-bottom: 24px;  
+}
+
+
+.add-form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.add-form input {
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--color-white);
+}
+
+.form-actions {
+  grid-column: span 4;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.list-section {
+  margin-top: 20px;
+}
+
+.med-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.med-table th,
+.med-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-color);
+  text-align: left;
+}
+
+.med-table tr.out-of-stock td {
+  opacity: 0.6;
+}
+
+.actions .btn {
+  margin-right: 6px;
+}
+
+.btn-danger {
+  background: #e74c3c;
+  color: white;
+}
+
+@media (max-width: 900px) {
+  .add-form {
+    grid-template-columns: 1fr;
+  }
+  .form-actions { grid-column: auto; }
+}

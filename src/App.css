@@ -1,0 +1,131 @@
+:root {
+  /* Color palette variables */
+  --color-primary: #1E88E5; /* Medical Blue */
+  --color-primary-dark: #1565C0; /* darker for hover */
+  --color-secondary: #43A047; /* Soft Green */
+  --color-accent: #FB8C00; /* Calm Orange */
+  --bg-light: #F5F7FA; /* Light Grey main background */
+  --color-white: #FFFFFF;
+  --text-primary: #263238;
+  --text-secondary: #546E7A;
+  --border-color: #E0E0E0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-primary);
+  background: var(--bg-light);
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+}
+
+.section {
+  padding: 60px 0;
+}
+
+/* Common components styled to follow the palette */
+.card {
+  background: var(--color-white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+input, textarea, select {
+  border: 1px solid var(--border-color);
+  background: var(--color-white);
+  color: var(--text-primary);
+  padding: 10px 12px;
+  border-radius: 6px;
+}
+
+.status-available {
+  display: inline-block;
+  background: var(--color-secondary);
+  color: var(--color-white);
+  padding: 6px 10px;
+  border-radius: 14px;
+  font-size: 14px;
+}
+
+.success {
+  color: var(--color-secondary);
+}
+
+.cta-accent:hover {
+  background: var(--color-accent) !important;
+  color: var(--color-white) !important;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: var(--text-primary);
+}
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.section {
+  padding: 60px 0;
+}

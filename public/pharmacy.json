@@ -1,0 +1,8 @@
+[
+  { "id": 1, "name": "HealthPlus Pharmacy", "location": "123 Main St, Downtown", "available": true },
+  { "id": 2, "name": "MediCare Store", "location": "456 Oak Ave, Westside", "available": true },
+  { "id": 3, "name": "City Medical Shop", "location": "789 Pine Rd, Eastside", "available": false },
+  { "id": 4, "name": "QuickMed Pharmacy", "location": "321 Elm St, Northside", "available": true },
+  { "id": 5, "name": "Wellness Drugstore", "location": "654 Maple Dr, Southside", "available": true },
+  { "id": 6, "name": "Care Plus Pharmacy", "location": "987 Cedar Ln, Central", "available": true }
+]

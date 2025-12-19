@@ -1,0 +1,24 @@
+.category-card {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.category-icon {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+.category-title {
+  font-size: 20px;
+  color: #2c3e50;
+}

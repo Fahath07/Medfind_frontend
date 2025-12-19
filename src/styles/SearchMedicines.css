@@ -1,0 +1,171 @@
+.search-medicines {
+  min-height: calc(100vh - 200px);
+}
+
+.search-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.search-header h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+  text-shadow: 5px 5px 5px black;
+    color: white;
+}
+
+.search-section {
+  margin: 40px 0;
+  align-content: center;
+}
+
+.search-form {
+  display: flex;
+  gap: 15px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.search-input {
+  flex: 1;
+  padding: 15px 20px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+}
+
+.results-section {
+  margin-top: 40px;
+}
+
+.results-section h2 {
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.shop-card {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.shop-card:hover {
+  transform: translateY(-5px);
+}
+
+.shop-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.shop-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.shop-location {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.availability {
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.in-stock {
+  background: #d4edda;
+  color: #155724;
+}
+
+.out-of-stock {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.medicine-card {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.medicine-card h3 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.category {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.pharmacies h4 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.pharmacy-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+
+.pharmacy-name {
+  font-weight: 600;
+}
+
+.location {
+  color: #666;
+}
+
+.price {
+  font-weight: 600;
+  color: #28a745;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pharmacy-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}
