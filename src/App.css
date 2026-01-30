@@ -101,31 +101,47 @@ input, textarea, select {
   margin-bottom: 40px;
   color: var(--text-primary);
 }
-.App {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .section {
+    padding: 40px 0;
+  }
+  
+  .section-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .card {
+    padding: 15px;
+  }
+  
+  input, textarea, select {
+    padding: 12px 15px;
+    font-size: 16px;
+  }
 }
 
-.main-content {
-  flex: 1;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.btn {
-  padding: 12px 30px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: all 0.3s;
-}
-
-.section {
-  padding: 60px 0;
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  .section {
+    padding: 30px 0;
+  }
+  
+  .section-title {
+    font-size: 24px;
+  }
 }
