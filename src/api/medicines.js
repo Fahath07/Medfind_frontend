@@ -1,4 +1,4 @@
-const BASE = 'https://medfind-backend.onrender.com/api/medicines';
+const BASE = 'https://medfind-backend-1.onrender.com/api/medicines';
 
 async function request(path = '', options = {}) {
   const token = localStorage.getItem('token');

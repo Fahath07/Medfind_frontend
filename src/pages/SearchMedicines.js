@@ -10,7 +10,7 @@ const SearchMedicines = () => {
   const [searched, setSearched] = useState(false);
 
   const headerStyle = {
-    backgroundImage: `linear-gradient(135deg, rgba(172, 175, 190, 0.85) 0%, rgba(4, 4, 4, 0.85) 100%), url('${searchBg}')`,
+    backgroundImage: `linear-gradient(135deg, rgba(86, 86, 86, 0.85) 0%, rgba(109, 105, 105, 0.85) 100%), url('${searchBg}')`,
     backgroundSize: 'cover',
     backgroundPosition: 'center'
   };
@@ -20,13 +20,20 @@ const SearchMedicines = () => {
     if (!searchTerm.trim()) return;
 
     setLoading(true);
+    setSearched(false);
     try {
+      console.log('Searching for:', searchTerm);
       const results = await ApiService.searchMedicines(searchTerm);
-      setSearchResults(results);
+      console.log('Search results:', results);
+      
+      // Handle different response formats
+      const medicines = Array.isArray(results) ? results : (results.medicines || results.data || []);
+      setSearchResults(medicines);
       setSearched(true);
     } catch (error) {
       console.error('Search error:', error);
       setSearchResults([]);
+      setSearched(true);
     } finally {
       setLoading(false);
     }
@@ -60,31 +67,36 @@ const SearchMedicines = () => {
         {searched && (
           <div className="results-section">
             <h2>Search Results for "{searchTerm}"</h2>
+            {loading && <p>Searching...</p>}
             {searchResults.length > 0 ? (
               <div className="results-grid">
-                {searchResults.map((medicine) => (
-                  <div key={medicine._id} className="medicine-card">
+                {searchResults.map((medicine, index) => (
+                  <div key={medicine._id || medicine.id || index} className="medicine-card">
                     <h3>{medicine.name}</h3>
                     <p className="category">Category: {medicine.category}</p>
-                    <div className="pharmacies">
-                      <h4>Available at:</h4>
-                      {medicine.pharmacies.map((pharmacy, index) => (
-                        <div key={index} className="pharmacy-item">
-                          <span className="pharmacy-name">{pharmacy.pharmacyName}</span>
-                          <span className="location">📍 {pharmacy.location}</span>
-                          <span className={`availability ${pharmacy.available ? 'in-stock' : 'out-of-stock'}`}>
-                            {pharmacy.available ? '✓ In Stock' : '✗ Out of Stock'}
-                          </span>
-                          {pharmacy.price && <span className="price">₹{pharmacy.price}</span>}
-                        </div>
-                      ))}
-                    </div>
+                    <p className="price">Price: ₹{medicine.price}</p>
+                    <p className="quantity">Available: {medicine.quantity} units</p>
+                    
+                    {medicine.pharmacies && medicine.pharmacies.length > 0 && (
+                      <div className="pharmacies">
+                        <h4>Available at:</h4>
+                        {medicine.pharmacies.map((pharmacy, pharmIndex) => (
+                          <div key={pharmIndex} className="pharmacy-item">
+                            <div className="pharmacy-name">{pharmacy.name}</div>
+                            <div className="pharmacy-address">📍 {pharmacy.address}</div>
+                            <div className="pharmacy-contact">📞 {pharmacy.contact}</div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
             ) : (
               <div className="no-results">
-                <p>No medicines found for "{searchTerm}". Try a different search term.</p>
+                <p>No medicines found for "{searchTerm}". </p>
+                
+               
               </div>
             )}
           </div>

@@ -1,9 +1,9 @@
-const API_BASE_URL = process.env.REACT_APP_API_BASE || 'https://medfind-backend.onrender.com/api';
+const API_BASE_URL = process.env.REACT_APP_API_BASE || 'https://medfind-backend-1.onrender.com/api';
 
 // Test connection function
 const testConnection = async () => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_API_URL || 'https://medfind-backend.onrender.com'}/api/health`);
+    const response = await fetch(`${process.env.REACT_APP_API_URL || 'https://medfind-backend-1.onrender.com'}/api/health`);
     return response.ok;
   } catch (error) {
     console.error('Connection test failed:', error);
@@ -17,7 +17,7 @@ class ApiService {
       // Test connection first
       const isConnected = await testConnection();
       if (!isConnected) {
-        throw new Error('Cannot connect to server. Please check if the backend is running on https://medfind-backend.onrender.com');
+        throw new Error('Cannot connect to server. Please check if the backend is running on https://medfind-backend-1.onrender.com');
       }
       
       console.log('Attempting login with URL:', `${API_BASE_URL}/auth/login`);
@@ -41,7 +41,7 @@ class ApiService {
     } catch (error) {
       console.error('Login error:', error);
       if (error.name === 'TypeError' && error.message.includes('fetch')) {
-        throw new Error('Cannot connect to server. Please check if the backend is running on https://medfind-backend.onrender.com');
+        throw new Error('Cannot connect to server. Please check if the backend is running on https://medfind-backend-1.onrender.com');
       }
       throw error;
     }
@@ -98,14 +98,45 @@ class ApiService {
 
   async searchMedicines(name) {
     try {
-      const response = await fetch(`${API_BASE_URL}/medicines/search?name=${encodeURIComponent(name)}`);
+      console.log('Searching medicines with URL:', `${API_BASE_URL}/medicines/search?name=${encodeURIComponent(name)}`);
+      
+      // Add timeout to prevent hanging
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+      
+      const response = await fetch(`${API_BASE_URL}/medicines/search?name=${encodeURIComponent(name)}`, {
+        signal: controller.signal
+      });
+      
+      clearTimeout(timeoutId);
+      console.log('Search response status:', response.status);
+      
       if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Search failed');
+        throw new Error('Backend unavailable');
       }
-      return response.json();
+      
+      const data = await response.json();
+      console.log('Search response data:', data);
+      return data;
     } catch (error) {
-      throw error;
+      console.error('Backend search failed, using local data:', error);
+      
+      // Fallback to local data
+      try {
+        const response = await fetch('/medicines.json');
+        const medicines = await response.json();
+        
+        // Filter medicines by name (case insensitive)
+        const filtered = medicines.filter(medicine => 
+          medicine.name.toLowerCase().includes(name.toLowerCase())
+        );
+        
+        console.log('Local search results:', filtered);
+        return filtered;
+      } catch (localError) {
+        console.error('Local search also failed:', localError);
+        throw new Error('Search unavailable');
+      }
     }
   }
 

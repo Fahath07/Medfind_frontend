@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://medfind-backend.onrender.com/api';
+const API_BASE_URL = 'https://medfind-backend-1.onrender.com/api';
 
 export const checkBackendHealth = async () => {
   try {
